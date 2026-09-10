@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suelo Vial — Movimiento de suelos y obras viales</title>
+<meta name="description" content="Suelo Vial: movimiento de suelos, demoliciones, compactación y obras viales desde 2008. Equipamiento propio y equipo capacitado.">
+<link rel="icon" href="assets/img/logo-suelovial.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">
+      <img src="assets/img/logo-suelovial.jpeg" alt="Suelo Vial" class="nav__logo">
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#empresa">Empresa</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#equipamiento">Equipamiento</a>
+      <a href="#galeria">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="nav__cta">Pedir presupuesto</a>
+    <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__media">
+    <!--
+      REEMPLAZO DE VIDEO:
+      Cuando subas el video de dron para el hero, guardalo como
+      assets/video/hero.mp4 (y opcionalmente hero.webm) y descomentá
+      el bloque <video> de abajo. El fallback de gradiente queda como
+      poster mientras tanto.
+    -->
+    <!--
+    <video class="hero__video" autoplay muted loop playsinline poster="assets/img/hero-poster.jpg">
+      <source src="assets/video/hero.webm" type="video/webm">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    -->
+    <div class="hero__fallback" aria-hidden="true"></div>
+    <div class="hero__scrim"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Suelo Vial · desde 2008</p>
+    <h1 class="hero__title">
+      <span class="reveal-line">Movemos la tierra</span>
+      <span class="reveal-line">que sostiene la obra.</span>
+    </h1>
+    <p class="hero__lede reveal-line">
+      Impulsamos la industria de la construcción a través de obras viales
+      y movimiento de suelos de alta precisión, con equipamiento propio
+      de última generación y un equipo capacitado para garantizar calidad
+      y eficiencia en cada etapa del proyecto.
+    </p>
+    <div class="hero__actions reveal-line">
+      <a href="#servicios" class="btn btn--primary">Ver servicios</a>
+      <a href="#contacto" class="btn btn--ghost">Contactanos</a>
+    </div>
+  </div>
+
+  <a href="#empresa" class="hero__scroll" aria-label="Bajar a la siguiente sección">
+    <span></span>
+  </a>
+</section>
+
+<!-- ============ EMPRESA ============ -->
+<section class="empresa" id="empresa">
+  <div class="empresa__grid">
+    <div class="empresa__coord">
+      <span>34°S</span>
+      <span>58°O</span>
+      <span>ARG</span>
+    </div>
+    <div class="empresa__text">
+      <h2>Un socio estratégico<br>en cada movimiento de suelo.</h2>
+      <p>
+        Contamos con equipamiento propio de última generación y un equipo
+        altamente capacitado para garantizar la máxima calidad y eficiencia
+        en cada etapa del proyecto.
+      </p>
+      <p>
+        Nuestro compromiso con la seguridad, la responsabilidad ambiental
+        y la excelencia operacional nos consolida como un socio estratégico
+        de absoluta confianza.
+      </p>
+      <ul class="empresa__stats">
+        <li><strong>2008</strong><span>Inicio de operaciones</span></li>
+        <li><strong>100%</strong><span>Flota y equipos propios</span></li>
+        <li><strong>+10</strong><span>Servicios especializados</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="servicios" id="servicios">
+  <div class="servicios__head">
+    <h2>Servicios</h2>
+    <p>Del desmonte a la obra terminada: cubrimos cada etapa del movimiento de suelo.</p>
+  </div>
+
+  <ul class="servicios__list">
+    <li class="servicios__item">
+      <span class="servicios__num">01</span>
+      <span class="servicios__name">Movimiento de suelo</span>
+      <span class="servicios__desc">Cambios de nivel, terraplenes y excavaciones para obra civil y vial.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">02</span>
+      <span class="servicios__name">Pista de salto</span>
+      <span class="servicios__desc">Construcción y perfilado de pistas para uso ecuestre y deportivo.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">03</span>
+      <span class="servicios__name">Demoliciones</span>
+      <span class="servicios__desc">Demolición planificada de edificios y pavimentos, bajo norma de seguridad.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">04</span>
+      <span class="servicios__name">Compactación y nivelación</span>
+      <span class="servicios__desc">Soporte de cimientos, obras viales, industriales e hidráulicas.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">05</span>
+      <span class="servicios__name">Desmonte</span>
+      <span class="servicios__desc">Excavación para bajar la rasante y preparar el plano de apoyo de la obra.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">06</span>
+      <span class="servicios__name">Caminos</span>
+      <span class="servicios__desc">Apertura, mejora y mantenimiento de caminos internos y de acceso.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">07</span>
+      <span class="servicios__name">Asfalto y fresado</span>
+      <span class="servicios__desc">Colocación de asfalto y fresado de calzada para renovación de pavimento.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">08</span>
+      <span class="servicios__name">Alquiler de maquinaria</span>
+      <span class="servicios__desc">Equipos propios disponibles para obras de terceros, con operador.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">09</span>
+      <span class="servicios__name">Venta de tierra</span>
+      <span class="servicios__desc">Provisión de tierra para relleno, nivelación y sustrato.</span>
+    </li>
+    <li class="servicios__item">
+      <span class="servicios__num">10</span>
+      <span class="servicios__name">Excavaciones</span>
+      <span class="servicios__desc">Excavaciones de precisión para fundaciones, zanjas e instalaciones.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ EQUIPAMIENTO ============ -->
+<section class="equipamiento" id="equipamiento">
+  <div class="equipamiento__media">
+    <!-- TODO: reemplazar por foto real de máquina/flota -->
+    <img src="assets/img/placeholder-maquina.svg" alt="Máquina de Suelo Vial trabajando en obra" loading="lazy">
+  </div>
+  <div class="equipamiento__text">
+    <p class="equipamiento__eyebrow">Equipamiento propio</p>
+    <h2>Flota lista para cualquier escala de obra.</h2>
+    <p>
+      Cada proyecto avanza con maquinaria propia, mantenida y operada por
+      nuestro equipo — sin depender de terceros para cumplir los tiempos
+      de obra.
+    </p>
+    <a href="#contacto" class="btn btn--outline">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<!-- ============ GALERÍA / TRABAJOS ============ -->
+<section class="galeria" id="galeria">
+  <div class="galeria__head">
+    <h2>Obras en movimiento</h2>
+    <p>Registro real de trabajo en terreno.</p>
+  </div>
+
+  <!--
+    GALERÍA — reemplazo de placeholders:
+    Cada .galeria__item admite una imagen o un <video muted loop playsinline>.
+    Sumá los archivos en assets/img/ o assets/video/ y actualizá el src.
+    El clip vertical de celular puede ir directo en un item "tall" (ver CSS .is-tall).
+  -->
+  <div class="galeria__grid">
+    <figure class="galeria__item is-wide">
+      <img src="assets/img/placeholder-terreno.svg" alt="Terreno trabajado por Suelo Vial" loading="lazy">
+    </figure>
+    <figure class="galeria__item is-tall">
+      <img src="assets/img/placeholder-vertical.svg" alt="Video vertical de obra" loading="lazy">
+    </figure>
+    <figure class="galeria__item">
+      <img src="assets/img/placeholder-camion.svg" alt="Camión de Suelo Vial" loading="lazy">
+    </figure>
+    <figure class="galeria__item">
+      <img src="assets/img/placeholder-tractor.svg" alt="Tractor de Suelo Vial" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="contacto__grid">
+    <div class="contacto__text">
+      <h2>Empecemos con tu obra.</h2>
+      <p>Contanos qué necesitás y te respondemos con un presupuesto.</p>
+
+      <!-- TODO: reemplazar número/mail/dirección reales cuando el cliente los confirme -->
+      <ul class="contacto__list">
+        <li>
+          <span>WhatsApp</span>
+          <a href="https://wa.me/5490000000000" target="_blank" rel="noopener">A confirmar</a>
+        </li>
+        <li>
+          <span>Teléfono</span>
+          <a href="tel:+540000000000">A confirmar</a>
+        </li>
+        <li>
+          <span>Email</span>
+          <a href="mailto:contacto@suelovial.com.ar">contacto@suelovial.com.ar</a>
+        </li>
+        <li>
+          <span>Ubicación</span>
+          <a href="#">Provincia de Buenos Aires</a>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contacto__form" id="contactForm">
+      <label>
+        Nombre
+        <input type="text" name="nombre" required>
+      </label>
+      <label>
+        Email o teléfono
+        <input type="text" name="contacto" required>
+      </label>
+      <label>
+        Contanos tu proyecto
+        <textarea name="mensaje" rows="4" required></textarea>
+      </label>
+      <button type="submit" class="btn btn--primary">Enviar consulta</button>
+      <p class="contacto__note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <img src="assets/img/logo-suelovial.jpeg" alt="Suelo Vial" class="footer__logo">
+  <p>© <span id="year"></span> Suelo Vial. Todos los derechos reservados.</p>
+</footer>
+
+<!-- ============ WHATSAPP FLOTANTE ============ -->
+<a href="https://wa.me/5490000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.6 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2z" fill="#1EA952"/>
+    <path d="M23.4 20.1c-.3.9-1.7 1.7-2.7 1.9-.7.1-1.6.2-4.7-1-4-1.6-6.6-5.6-6.8-5.9-.2-.3-1.6-2.1-1.6-4s1-2.8 1.4-3.2c.4-.4.8-.5 1.1-.5h.8c.3 0 .6 0 .9.7.3.8 1 2.5 1.1 2.7.1.2.2.4 0 .7-.6 1.1-1.2 1.1-.9 1.6.9 1.7 2.2 3 3.9 3.9.4.2.6.2.8-.1.3-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.2 2.3 1.1 2.7 1.3.4.2.7.3.8.5.1.2.1 1-.2 1.9z" fill="#fff"/>
+  </svg>
+</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>
