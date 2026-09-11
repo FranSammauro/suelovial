@@ -1,0 +1,13 @@
+# robots.txt para Suelo Vial
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://suelovial.com.ar/sitemap.xml
+
+# Disallow admin/private areas (si las hay en el futuro)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay para ser amables con el servidor (opcional)
+# Crawl-delay: 10
