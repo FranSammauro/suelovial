@@ -36,33 +36,50 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__media">
-    <video class="hero__video" autoplay muted loop playsinline poster="assets/img/hero-poster.jpg">
-      <source src="assets/video/hero.webm" type="video/webm">
+
+    <video
+      class="hero__video"
+      muted
+      loop
+      playsinline
+      autoplay
+      preload="none"
+      poster="assets/img/hero-poster.jpg"
+      aria-hidden="true"
+      data-hero-video>
+
       <source src="assets/video/hero.mp4" type="video/mp4">
     </video>
+
     <div class="hero__fallback" aria-hidden="true"></div>
     <div class="hero__scrim"></div>
+
   </div>
 
   <div class="hero__content">
     <p class="hero__eyebrow">Suelo Vial · desde 2008</p>
+
     <h1 class="hero__title">
       <span class="reveal-line">Movemos la tierra</span>
       <span class="reveal-line">que sostiene la obra.</span>
     </h1>
+
     <p class="hero__lede reveal-line">
       Impulsamos la industria de la construcción a través de obras viales
       y movimiento de suelos de alta precisión, con equipamiento propio
       de última generación y un equipo capacitado para garantizar calidad
       y eficiencia en cada etapa del proyecto.
     </p>
+
     <div class="hero__actions reveal-line">
       <a href="#servicios" class="btn btn--primary">Ver servicios</a>
       <a href="#contacto" class="btn btn--ghost">Contactanos</a>
     </div>
   </div>
 
-  <a href="#empresa" class="hero__scroll" aria-label="Bajar a la siguiente sección">
+  <a href="#empresa"
+     class="hero__scroll"
+     aria-label="Bajar a la siguiente sección">
     <span></span>
   </a>
 </section>

@@ -43,3 +43,69 @@ form.addEventListener('submit', (e) => {
   window.open(whatsappUrl, '_blank');
   form.reset();
 });
+
+// ============ Videos: carga diferida ============
+
+const heroVideo = document.querySelector('[data-hero-video]');
+
+if (heroVideo) {
+  const loadHeroVideo = () => {
+    if (heroVideo.dataset.loaded) return;
+
+    heroVideo.dataset.loaded = 'true';
+    heroVideo.preload = 'auto';
+    heroVideo.load();
+
+    heroVideo.play().catch(() => {});
+  };
+
+  // Esperamos a que el navegador termine el primer render.
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadHeroVideo, { timeout: 1500 });
+  } else {
+    window.setTimeout(loadHeroVideo, 1000);
+  }
+}
+
+
+// ============ Videos de galería: IntersectionObserver ============
+
+const lazyVideos = document.querySelectorAll(
+  'video[data-src]'
+);
+
+if (lazyVideos.length) {
+  const videoObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const video = entry.target;
+        const src = video.dataset.src;
+
+        if (!src) return;
+
+        video.src = src;
+        video.load();
+
+        video.addEventListener(
+          'canplay',
+          () => {
+            video.play().catch(() => {});
+          },
+          { once: true }
+        );
+
+        delete video.dataset.src;
+        observer.unobserve(video);
+      });
+    },
+    {
+      rootMargin: '400px 0px'
+    }
+  );
+
+  lazyVideos.forEach((video) => {
+    videoObserver.observe(video);
+  });
+}
