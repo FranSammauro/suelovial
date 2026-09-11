@@ -25,14 +25,16 @@ y entrá a `http://localhost:8000`.
    por la foto real, guardándolas en `assets/img/`.
 
 3. **Video vertical del iPhone**: tiene su propio slot en la galería
-   (`.galeria__item.is-tall`). Al ser vertical, ese bloque ya está
-   pensado con una proporción alta — poné ahí un `<video>` en vez de
-   `<img>` cuando lo subas, igual que el hero (muted, loop, playsinline).
+   (`.galeria__item.is-tall`), y ya está armado como `<video>` (no
+   `<img>`, para no perder calidad convirtiéndolo a GIF). Guardá el
+   archivo en `assets/video/vertical.mp4` y descomentá el `<source>`
+   correspondiente en `index.html`.
 
-4. **Datos de contacto** (`index.html`, sección `.contacto`, y el
-   ícono flotante de WhatsApp al final del `<body>`): todos los
-   `wa.me/5490000000000`, teléfonos y el mail son placeholders — hay
-   que poner el WhatsApp, teléfono, mail y dirección reales.
+4. **Datos de contacto**: ya están cargados el WhatsApp
+   (+54 9 11 3775-8907), teléfono y mail reales. Si en algún momento
+   quieren sumar una dirección con calle y número (hoy solo dice
+   "Pilar, Buenos Aires"), se agrega en el mismo bloque de
+   `.contacto__list` en `index.html`.
 
 5. **Formulario de contacto**: hoy el botón "Enviar consulta" abre
    WhatsApp con el mensaje armado (no hay backend). Si prefieren que

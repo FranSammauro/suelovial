@@ -37,7 +37,7 @@ form.addEventListener('submit', (e) => {
   const mensaje = form.mensaje.value.trim();
 
   const texto = `Hola, soy ${nombre} (${contactoVal}). ${mensaje}`;
-  const whatsappUrl = `https://wa.me/5490000000000?text=${encodeURIComponent(texto)}`;
+  const whatsappUrl = `https://wa.me/5491137758907?text=${encodeURIComponent(texto)}`;
 
   formNote.textContent = 'Te abrimos WhatsApp para enviar tu consulta...';
   window.open(whatsappUrl, '_blank');
