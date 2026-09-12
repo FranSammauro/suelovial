@@ -9,15 +9,36 @@ window.addEventListener('scroll', onScroll, { passive: true });
 // ============ Nav: menú mobile ============
 const burger = document.getElementById('navBurger');
 const navLinks = document.getElementById('navLinks');
+
+const closeMobileMenu = () => {
+  navLinks.classList.remove('is-open');
+  burger.setAttribute('aria-expanded', 'false');
+};
+
 burger.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('is-open');
   burger.setAttribute('aria-expanded', String(isOpen));
 });
+
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('is-open');
-    burger.setAttribute('aria-expanded', 'false');
-  });
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Cerrar menú al hacer click fuera
+document.addEventListener('click', (e) => {
+  if (navLinks.classList.contains('is-open') &&
+      !navLinks.contains(e.target) &&
+      !burger.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
+// Cerrar menú con tecla Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('is-open')) {
+    closeMobileMenu();
+    burger.focus();
+  }
 });
 
 // ============ Footer: año automático ============
@@ -30,16 +51,81 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const form = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 
+const validateField = (field) => {
+  const value = field.value.trim();
+  const errorId = `${field.id}-error`;
+  let errorEl = document.getElementById(errorId);
+
+  if (!value) {
+    field.setAttribute('aria-invalid', 'true');
+    if (!errorEl) {
+      errorEl = document.createElement('p');
+      errorEl.id = errorId;
+      errorEl.className = 'form-error';
+      errorEl.textContent = 'Este campo es obligatorio';
+      field.parentNode.appendChild(errorEl);
+    }
+    return false;
+  }
+
+  if (field.id === 'contacto' && value) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
+    if (!emailRegex.test(value) && !phoneRegex.test(value)) {
+      field.setAttribute('aria-invalid', 'true');
+      if (!errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.id = errorId;
+        errorEl.className = 'form-error';
+        errorEl.textContent = 'Ingresá un email o teléfono válido';
+        field.parentNode.appendChild(errorEl);
+      }
+      return false;
+    }
+  }
+
+  field.removeAttribute('aria-invalid');
+  if (errorEl) {
+    errorEl.remove();
+  }
+  return true;
+};
+
+form.querySelectorAll('input, textarea').forEach(field => {
+  field.addEventListener('blur', () => validateField(field));
+  field.addEventListener('input', () => {
+    if (field.hasAttribute('aria-invalid')) {
+      validateField(field);
+    }
+  });
+});
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const nombre = form.nombre.value.trim();
-  const contactoVal = form.contacto.value.trim();
-  const mensaje = form.mensaje.value.trim();
 
-  const texto = `Hola, soy ${nombre} (${contactoVal}). ${mensaje}`;
+  const nombre = form.nombre;
+  const contactoVal = form.contacto;
+  const mensaje = form.mensaje;
+
+  const isValid = [
+    validateField(nombre),
+    validateField(contactoVal),
+    validateField(mensaje)
+  ].every(Boolean);
+
+  if (!isValid) {
+    formNote.textContent = 'Por favor completá los campos marcados';
+    formNote.style.color = '#E8842C';
+    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+    if (firstInvalid) firstInvalid.focus();
+    return;
+  }
+
+  const texto = `Hola, soy ${nombre.value.trim()} (${contactoVal.value.trim()}). ${mensaje.value.trim()}`;
   const whatsappUrl = `https://wa.me/5491137758907?text=${encodeURIComponent(texto)}`;
 
   formNote.textContent = 'Te abrimos WhatsApp para enviar tu consulta...';
+  formNote.style.color = '#E8842C';
   window.open(whatsappUrl, '_blank');
   form.reset();
 });
@@ -70,9 +156,7 @@ if (heroVideo) {
 
 // ============ Videos de galería: IntersectionObserver ============
 
-const lazyVideos = document.querySelectorAll(
-  'video[data-src], video source[data-src]'
-);
+const lazyVideos = document.querySelectorAll('video.lazy-video[data-src]');
 
 if (lazyVideos.length) {
   const videoObserver = new IntersectionObserver(
@@ -80,46 +164,23 @@ if (lazyVideos.length) {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        const element = entry.target;
+        const video = entry.target;
+        const src = video.dataset.src;
+        if (!src) return;
 
-        if (element.tagName === 'VIDEO') {
-          const src = element.dataset.src;
-          if (!src) return;
+        video.src = src;
+        video.load();
 
-          element.src = src;
-          element.load();
+        video.addEventListener(
+          'canplay',
+          () => {
+            video.play().catch(() => {});
+          },
+          { once: true }
+        );
 
-          element.addEventListener(
-            'canplay',
-            () => {
-              element.play().catch(() => {});
-            },
-            { once: true }
-          );
-
-          delete element.dataset.src;
-          observer.unobserve(element);
-        } else if (element.tagName === 'SOURCE') {
-          const src = element.dataset.src;
-          if (!src) return;
-
-          element.src = src;
-          const video = element.parentElement;
-          if (video) {
-            video.load();
-
-            video.addEventListener(
-              'canplay',
-              () => {
-                video.play().catch(() => {});
-              },
-              { once: true }
-            );
-          }
-
-          delete element.dataset.src;
-          observer.unobserve(element);
-        }
+        delete video.dataset.src;
+        observer.unobserve(video);
       });
     },
     {
@@ -127,7 +188,7 @@ if (lazyVideos.length) {
     }
   );
 
-  lazyVideos.forEach((element) => {
-    videoObserver.observe(element);
+  lazyVideos.forEach((video) => {
+    videoObserver.observe(video);
   });
 }

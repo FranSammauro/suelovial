@@ -1,12 +1,13 @@
 {
-  "name": "Suelo Vial",
+  "name": "Suelo Vial — Movimiento de suelos y obras viales",
   "short_name": "Suelo Vial",
-  "description": "Movimiento de suelos, demoliciones, compactación y obras viales desde 2008 en Pilar, Buenos Aires.",
+  "description": "Movimiento de suelos, demoliciones, compactación y obras viales desde 2008 en Pilar, Buenos Aires. Equipamiento propio y equipo capacitado.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0D0D0D",
   "theme_color": "#E8842C",
   "orientation": "portrait-primary",
+  "scope": "/",
   "icons": [
     {
       "src": "assets/img/logo-suelovial.png",
@@ -23,5 +24,22 @@
   ],
   "categories": ["business", "construction"],
   "lang": "es-AR",
-  "dir": "ltr"
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Contactar por WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Enviar consulta por WhatsApp",
+      "url": "https://wa.me/5491137758907",
+      "icons": [{ "src": "assets/img/logo-suelovial.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Ver Servicios",
+      "short_name": "Servicios",
+      "description": "Ver todos los servicios de movimiento de suelos",
+      "url": "https://suelovial.com.ar/#servicios",
+      "icons": [{ "src": "assets/img/logo-suelovial.png", "sizes": "192x192" }]
+    }
+  ]
 }

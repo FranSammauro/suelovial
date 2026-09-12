@@ -11,3 +11,6 @@ Sitemap: https://suelovial.com.ar/sitemap.xml
 
 # Crawl-delay para ser amables con el servidor (opcional)
 # Crawl-delay: 10
+
+# Host preference (deprecated but still used by some)
+Host: https://suelovial.com.ar
