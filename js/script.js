@@ -46,7 +46,10 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // ============ Footer: mapa interactivo ============
 const mapContainer = document.getElementById('footerMap');
-if (mapContainer && typeof L !== 'undefined') {
+
+const initMap = () => {
+  if (!mapContainer || typeof L === 'undefined') return;
+
   const map = L.map('footerMap', {
     zoomControl: false,
     attributionControl: false,
@@ -79,6 +82,20 @@ if (mapContainer && typeof L !== 'undefined') {
 
   map.once('load', () => {
     map.invalidateSize();
+  });
+};
+
+// Ensure Leaflet is loaded before initializing (handles deferred scripts on hosting)
+if (typeof L !== 'undefined') {
+  initMap();
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    const checkLeaflet = setInterval(() => {
+      if (typeof L !== 'undefined') {
+        clearInterval(checkLeaflet);
+        initMap();
+      }
+    }, 50);
   });
 }
 
