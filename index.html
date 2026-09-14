@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suelo Vial — Movimiento de suelos y obras viales | Pilar, Buenos Aires</title>
+<title>Suelo Vial — Movimiento de suelos y obras viales | Pilar, Buenos Aires. Zona Norte</title>
 <meta name="description" content="Suelo Vial: movimiento de suelos, demoliciones, compactación y obras viales desde 2008 en Pilar, Buenos Aires. Equipamiento propio, flota propia y equipo capacitado. Presupuestos sin cargo.">
 <meta name="keywords" content="movimiento de suelos, obras viales, demoliciones, compactación, terraplenes, excavaciones, alquiler maquinaria, venta de tierra, Pilar, Buenos Aires, Suelo Vial">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -12,11 +12,11 @@
 <link rel="canonical" href="https://suelovial.com.ar/">
 <link rel="alternate" hreflang="es" href="https://suelovial.com.ar/">
 <link rel="alternate" hreflang="x-default" href="https://suelovial.com.ar/">
-<link rel="icon" href="assets/img/logo-suelovial.png" type="image/png">
-<link rel="icon" sizes="32x32" href="assets/img/logo-suelovial.png" type="image/png">
-<link rel="icon" sizes="16x16" href="assets/img/logo-suelovial.png" type="image/png">
-<link rel="icon" type="image/webp" href="assets/img/logo-suelovial.webp">
-<link rel="apple-touch-icon" href="assets/img/logo-suelovial.png">
+<link rel="icon" href="assets/img/favicon.jpeg" type="image/png">
+<link rel="icon" sizes="32x32" href="assets/img/favicon.jpeg" type="image/png">
+<link rel="icon" sizes="16x16" href="assets/img/favicon.jpeg" type="image/png">
+<link rel="icon" type="image/webp" href="assets/img/favicon.jpeg">
+<link rel="apple-touch-icon" href="assets/img/favicon.jpeg">
 <link rel="manifest" href="manifest.json">
 
 <!-- DNS Prefetch y Preconnect para recursos externos -->
@@ -33,6 +33,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/worksans/v18/QGYsz_wNahGAdqQ43RhVcIgYq2g.woff2">
 <link rel="preload" as="image" type="image/webp" href="assets/img/hero-poster.webp">
 <link rel="preload" as="image" type="image/webp" href="assets/img/logo-suelovial.webp">
+<link rel="preload" as="video" type="video/webm" href="assets/video/hero.webm">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -170,6 +171,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
 <!-- Critical CSS inlined for above-the-fold content -->
 <style>
@@ -212,7 +214,7 @@
       loop
       playsinline
       autoplay
-      preload="none"
+      preload="auto"
       poster="assets/img/hero-poster.webp"
       aria-hidden="true"
       data-hero-video>
@@ -230,8 +232,8 @@
     <p class="hero__eyebrow">Suelo Vial · desde 2008</p>
 
     <h1 class="hero__title">
-      <span class="reveal-line">Movemos la tierra</span>
-      <span class="reveal-line">que sostiene la obra.</span>
+      <span class="reveal-line">Movimiento de suelo</span>
+      <span class="reveal-line">en Pilar zona norte.</span>
     </h1>
 
     <p class="hero__lede reveal-line">
@@ -462,6 +464,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
+  <div class="footer__map" id="footerMap" aria-label="Mapa de ubicación: Cuba 665, Pilar"></div>
   <picture>
     <source srcset="assets/img/logo-suelovial.webp" type="image/webp">
     <img src="assets/img/logo-suelovial.png" alt="Suelo Vial" class="footer__logo" width="140" height="36">
@@ -477,6 +480,7 @@
   </svg>
 </a>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="js/script.js"></script>
 </body>
 </html>

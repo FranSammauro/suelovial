@@ -44,6 +44,34 @@ document.addEventListener('keydown', (e) => {
 // ============ Footer: año automático ============
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ============ Footer: mapa interactivo ============
+const mapContainer = document.getElementById('footerMap');
+if (mapContainer && typeof L !== 'undefined') {
+  const map = L.map('footerMap', {
+    zoomControl: false,
+    attributionControl: false,
+    dragging: true,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    tap: false,
+    touchZoom: false
+  }).setView([-34.46, -58.91], 15);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  const marker = L.marker([-34.46, -58.91]).addTo(map);
+  marker.bindPopup('<strong>Suelo Vial</strong><br>Cuba 665 - Pilar<br>Buenos Aires, Argentina').openPopup();
+
+  map.once('load', () => {
+    map.invalidateSize();
+  });
+}
+
 // ============ Formulario de contacto ============
 // Nota: esto es un stub sin backend. Cuando el cliente defina cómo
 // quiere recibir las consultas (mailto, WhatsApp, un form service tipo
@@ -145,11 +173,11 @@ if (heroVideo) {
     heroVideo.play().catch(() => {});
   };
 
-  // Esperamos a que el navegador termine el primer render.
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadHeroVideo, { timeout: 1500 });
+  // Load immediately for smoother playback
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    loadHeroVideo();
   } else {
-    window.setTimeout(loadHeroVideo, 1000);
+    document.addEventListener('DOMContentLoaded', loadHeroVideo, { once: true });
   }
 }
 
