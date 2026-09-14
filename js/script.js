@@ -59,13 +59,23 @@ if (mapContainer && typeof L !== 'undefined') {
     touchZoom: false
   }).setView([-34.46, -58.91], 15);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
 
-  const marker = L.marker([-34.46, -58.91]).addTo(map);
-  marker.bindPopup('<strong>Suelo Vial</strong><br>Cuba 665 - Pilar<br>Buenos Aires, Argentina').openPopup();
+  const customIcon = L.divIcon({
+    className: 'custom-marker',
+    html: '<div class="marker-pin"></div>',
+    iconSize: [28, 40],
+    iconAnchor: [14, 40],
+    popupAnchor: [0, -35]
+  });
+
+  const marker = L.marker([-34.46, -58.91], { icon: customIcon }).addTo(map);
+  marker.bindPopup(
+    '<div class="custom-popup"><strong>Suelo Vial</strong><br>Cuba 665, Pilar<br>Buenos Aires, Argentina</div>'
+  ).openPopup();
 
   map.once('load', () => {
     map.invalidateSize();
