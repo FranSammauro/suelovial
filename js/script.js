@@ -159,12 +159,17 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const texto = `Hola, soy ${nombre.value.trim()} (${contactoVal.value.trim()}). ${mensaje.value.trim()}`;
-  const whatsappUrl = `https://wa.me/5491137758907?text=${encodeURIComponent(texto)}`;
+  const asunto = encodeURIComponent(`Nueva consulta de ${nombre.value.trim()} - Suelo Vial`);
+  const cuerpo = encodeURIComponent(
+    `Nombre: ${nombre.value.trim()}\n` +
+    `Contacto: ${contactoVal.value.trim()}\n\n` +
+    `Mensaje:\n${mensaje.value.trim()}`
+  );
+  const mailtoUrl = `mailto:info@suelovial.com.ar?subject=${asunto}&body=${cuerpo}`;
 
-  formNote.textContent = 'Te abrimos WhatsApp para enviar tu consulta...';
+  formNote.textContent = 'Abriendo tu cliente de correo...';
   formNote.style.color = '#E8842C';
-  window.open(whatsappUrl, '_blank');
+  window.location.href = mailtoUrl;
   form.reset();
 });
 
