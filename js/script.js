@@ -44,55 +44,94 @@ document.addEventListener('keydown', (e) => {
 // ============ Footer: año automático ============
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ============ Footer: mapa interactivo ============
+// ============ Footer: mapa interactivo (MapLibre GL JS) ============
 const mapContainer = document.getElementById('footerMap');
 
 const initMap = () => {
-  if (!mapContainer || typeof L === 'undefined') return;
+  if (!mapContainer || typeof maplibregl === 'undefined') return;
 
-  const map = L.map('footerMap', {
-    zoomControl: false,
+  const coordinates = [-58.91, -34.46]; // [lng, lat] for MapLibre
+
+  const map = new maplibregl.Map({
+    container: 'footerMap',
+    style: {
+      version: 8,
+      sources: {
+        'carto-dark': {
+          type: 'raster',
+          tiles: [
+            'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+            'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+          ],
+          tileSize: 256,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        }
+      },
+      layers: [
+        {
+          id: 'carto-dark-layer',
+          type: 'raster',
+          source: 'carto-dark'
+        }
+      ]
+    },
+    center: coordinates,
+    zoom: 15,
     attributionControl: false,
-    dragging: true,
-    scrollWheelZoom: false,
+    dragPan: true,
+    scrollZoom: false,
     doubleClickZoom: false,
     boxZoom: false,
     keyboard: false,
-    tap: false,
-    touchZoom: false
-  }).setView([-34.46, -58.91], 15);
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  }).addTo(map);
-
-  const customIcon = L.divIcon({
-    className: 'custom-marker',
-    html: '<div class="marker-pin"></div>',
-    iconSize: [28, 40],
-    iconAnchor: [14, 40],
-    popupAnchor: [0, -35]
+    touchZoomRotate: false,
+    pitchWithRotate: false
   });
 
-  const marker = L.marker([-34.46, -58.91], { icon: customIcon }).addTo(map);
-  marker.bindPopup(
-    '<div class="custom-popup"><strong>Suelo Vial</strong><br>Cuba 665, Pilar<br>Buenos Aires, Argentina</div>'
-  ).openPopup();
+  // Add custom marker using HTML element
+  const markerEl = document.createElement('div');
+  markerEl.className = 'custom-marker';
+  markerEl.innerHTML = '<div class="marker-pin"></div>';
+  markerEl.style.width = '28px';
+  markerEl.style.height = '40px';
 
-  map.once('load', () => {
-    map.invalidateSize();
+  const marker = new maplibregl.Marker(markerEl, { anchor: 'bottom' })
+    .setLngLat(coordinates)
+    .addTo(map);
+
+  // Add popup
+  const popup = new maplibregl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+    anchor: 'top',
+    offset: [0, -35],
+    className: 'custom-popup'
+  }).setLngLat(coordinates)
+    .setHTML('<div class="custom-popup-content"><strong>Suelo Vial</strong><br>Cuba 665, Pilar<br>Buenos Aires, Argentina</div>')
+    .addTo(map);
+
+  // Show popup on marker hover
+  marker.getElement().addEventListener('mouseenter', () => {
+    popup.addTo(map);
+  });
+
+  marker.getElement().addEventListener('mouseleave', () => {
+    popup.remove();
+  });
+
+  // Ensure map renders correctly
+  map.on('load', () => {
+    map.resize();
   });
 };
 
-// Ensure Leaflet is loaded before initializing (handles deferred scripts on hosting)
-if (typeof L !== 'undefined') {
+// Ensure MapLibre is loaded before initializing
+if (typeof maplibregl !== 'undefined') {
   initMap();
 } else {
   document.addEventListener('DOMContentLoaded', () => {
-    const checkLeaflet = setInterval(() => {
-      if (typeof L !== 'undefined') {
-        clearInterval(checkLeaflet);
+    const checkMaplibre = setInterval(() => {
+      if (typeof maplibregl !== 'undefined') {
+        clearInterval(checkMaplibre);
         initMap();
       }
     }, 50);
