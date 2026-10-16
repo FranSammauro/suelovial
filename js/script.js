@@ -51,8 +51,8 @@ const initMap = () => {
   if (!mapContainer || typeof L === 'undefined') return;
 
   const map = L.map('footerMap', {
-    zoomControl: false,
-    attributionControl: false,
+    zoomControl: true,
+    attributionControl: true,
     dragging: true,
     scrollWheelZoom: false,
     doubleClickZoom: false,
@@ -60,19 +60,23 @@ const initMap = () => {
     keyboard: false,
     tap: false,
     touchZoom: false
-  }).setView([-34.46, -58.91], 15);
+  }).setView([-34.46, -58.91], 16);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_4lz6_1_a0b1decf579f34dd0bd32136', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  }).addTo(map);
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_4lz6_2_0006c9660640496966753006',
+    {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }
+  ).addTo(map);
 
   const customIcon = L.divIcon({
     className: 'custom-marker',
-    html: '<div class="marker-pin"></div>',
-    iconSize: [28, 40],
-    iconAnchor: [14, 40],
-    popupAnchor: [0, -35]
+    html: '<div class="marker-pin"><div class="marker-dot"></div></div>',
+    iconSize: [36, 48],
+    iconAnchor: [18, 48],
+    popupAnchor: [0, -42]
   });
 
   const marker = L.marker([-34.46, -58.91], { icon: customIcon }).addTo(map);
