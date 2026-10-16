@@ -177,6 +177,15 @@
 :root{--black:#0D0D0D;--bone:#F5F3EF;--orange:#E8842C;--asphalt:#2A2A28;--stone:#8C8880;--line:rgba(245,243,239,.14);--font-display:'Anton',sans-serif;--font-body:'Work Sans',sans-serif;--container:1200px;--gap:clamp(1.25rem,3vw,2.5rem);--radius:2px}*,::before,::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--bone);font-family:var(--font-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}img{max-width:100%;display:block}a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--font-display);font-style:italic;letter-spacing:.01em;line-height:1.05;margin:0;transform:skewX(-3deg)}.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;transition:background .3s ease,border-color .3s ease;border-bottom:1px solid transparent}.nav.is-scrolled{background:rgba(13,13,13,.92);backdrop-filter:blur(6px);border-bottom-color:var(--line)}.nav__inner{max-width:var(--container);margin:0 auto;padding:.9rem clamp(1.25rem,5vw,3rem);display:flex;align-items:center;gap:2rem}.nav__brand{margin-right:auto}.nav__logo{height:46px;width:auto}.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}.hero__media{position:absolute;inset:0;z-index:0}.hero__video{width:100%;height:100%;object-fit:cover}.hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.15) 0%,rgba(13,13,13,.35) 55%,rgba(13,13,13,.94) 100%)}.hero__content{position:relative;z-index:1;max-width:var(--container);width:100%;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem) clamp(4rem,10vh,7rem)}.hero__eyebrow{color:var(--orange);font-weight:600;font-size:.85rem;letter-spacing:.06em;margin-bottom:.6rem}.hero__title{font-size:clamp(2.6rem,7vw,5.4rem)}.hero__title .reveal-line{display:block}.hero__lede{max-width:46ch;margin-top:1.2rem;color:var(--stone);font-size:1.05rem}.hero__actions{margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;font-family:var(--font-body);font-weight:600;font-size:.95rem;border:1px solid transparent;border-radius:var(--radius);transition:background .2s ease,color .2s ease,border-color .2s ease;cursor:pointer}.btn--primary{background:var(--orange);color:var(--black)}.btn--ghost{border-color:var(--line);color:var(--bone)}.reveal-line{opacity:0;transform:translateY(16px);animation:revealUp .7s cubic-bezier(.2,.8,.2,1) forwards}@keyframes revealUp{to{opacity:1;transform:translateY(0)}}@media (prefers-reduced-motion:reduce){.reveal-line{animation:none;opacity:1;transform:none}}
 </style>
 <link rel="stylesheet" href="css/styles.css">
+<!-- Google Ads: etiqueta global -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18449289755"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18449289755');
+</script>
+
 </head>
 <body>
 
@@ -463,7 +472,8 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="footer__map" id="footerMap" aria-label="Mapa de ubicación: Cuba 665, Pilar">
+  <div class="footer__map-wrapper">
+    <div class="footer__map" id="footerMap" aria-label="Mapa de ubicación: Cuba 665, Pilar"></div>
     <a href="https://www.google.com/maps/dir/?api=1&destination=-34.46,-58.91" target="_blank" rel="noopener noreferrer" class="footer__map-btn" aria-label="Cómo llegar a Suelo Vial en Google Maps">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>

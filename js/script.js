@@ -256,3 +256,28 @@ if (lazyVideos.length) {
     videoObserver.observe(video);
   });
 }
+
+// ============ Google Ads: conversiones de WhatsApp ============
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+
+  let destination;
+
+  try {
+    destination = new URL(link.href);
+  } catch {
+    return;
+  }
+
+  if (destination.hostname !== 'wa.me') return;
+
+  if (typeof gtag !== 'function') {
+    console.warn('Google Ads no está disponible; no se pudo enviar la conversión.');
+    return;
+  }
+
+  gtag('event', 'conversion', {
+    send_to: 'AW-18449289755/942zCL3AvZ4dEJukp91E'
+  });
+});
